@@ -64,13 +64,13 @@ int main()
     schInit();
 
     /* tasks for red flashing led */
-    schAddTask(red_on, 0, 9);
-    schAddTask(red_off, 2, 9);
+    schAddTask(red_on,   0, 225);
+    schAddTask(red_off, 50, 225);
 
     /* tasks for green group flashing */
-    schAddTask(green_grp_on, 0, 9);
-    schAddTask(green_grp_off, 2, 9);
-    schAddTask(green_grp_reset, 0, 32);
+    schAddTask(green_grp_on,    0, 225);
+    schAddTask(green_grp_off,  50, 225);
+    schAddTask(green_grp_reset, 0, 800);
 
     schStart();
 
