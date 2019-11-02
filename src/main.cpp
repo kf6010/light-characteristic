@@ -31,6 +31,29 @@ void red_off(void)
     red = off;
 }
 
+int flashes;                    /* flashes left in sequence */
+
+void green_grp_on(void)
+{
+    if (flashes > 0) {
+        green = on;
+    }
+}
+
+void green_grp_off(void)
+{
+    if (flashes > 0) {
+        green = off;
+        flashes -= 1;
+    }
+}
+
+void green_grp_reset(void)
+{
+    flashes = 3;
+}
+
+
 int main()
 {
     red = 1;
@@ -40,8 +63,14 @@ int main()
 
     schInit();
 
-	schAddTask( red_on,  0, 5);
-	schAddTask( red_off, 1, 5);
+    /* tasks for red flashing led */
+    schAddTask(red_on, 0, 5);
+    schAddTask(red_off, 2, 5);
+
+    /* tasks for green group flashing */
+    schAddTask(green_grp_on, 0, 5);
+    schAddTask(green_grp_off, 2, 5);
+    schAddTask(green_grp_reset, 0, 32);
 
     schStart();
 
