@@ -103,29 +103,32 @@ int main()
 {
     red = 1;
     green = 1;
+    blue = 1;
     app_red = 1;
     app_green = 1;
+    app_blue = 1;
+
     schInit();
  
  	/* tasks for red flashing led */
-    schAddTask(red_on, 0, 225);
-    schAddTask(red_off, 50, 225);
+//    schAddTask(red_on, 0, 225);
+//    schAddTask(red_off, 50, 225);
  
  	/* tasks for green group flashing */
+    schAddTask(green_grp_reset, 0, 800);
     schAddTask(green_grp_on, 0, 225);
     schAddTask(green_grp_off, 50, 225);
-    schAddTask(green_grp_reset, 0, 800);
  
  	/* tasks for blue flashing led */
-    schAddTask(blue_on, 0, 100);
-    schAddTask(blue_off, 25, 100);
+//    schAddTask(blue_on, 0, 100);
+//    schAddTask(blue_off, 25, 100);
  
 	/* tasks for south cardinal mark */
-   schAddTask(app_red_on,   0, 100);
-   schAddTask(app_red_off, 25, 100);
-   schAddTask(app_red_reset, 0, 1200);
-   schAddTask(app_red_long_on,  600, 1200);
-   schAddTask(app_red_long_off, 800, 1200);
+    schAddTask(app_red_reset, 0, 1200);
+    schAddTask(app_red_on,   0, 100);
+    schAddTask(app_red_off, 25, 100);
+    schAddTask(app_red_long_on,  600, 1200);
+    schAddTask(app_red_long_off, 900, 1200);
 
 	/* start schedule... */
     schStart();
