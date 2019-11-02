@@ -21,6 +21,16 @@ static DigitalOut led_app_blue(D8);
 
 enum { on, off };
 
+void red_on(void)
+{
+    red = on;
+}
+
+void red_off(void)
+{
+    red = off;
+}
+
 int main()
 {
     red = 1;
@@ -30,6 +40,8 @@ int main()
 
     schInit();
 
+	schAddTask( red_on,  0, 5);
+	schAddTask( red_off, 1, 5);
 
     schStart();
 
