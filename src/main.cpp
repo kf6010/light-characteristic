@@ -40,8 +40,8 @@ int main()
 
     schInit();
 
-	schAddTask( red_on,  0, 5);
-	schAddTask( red_off, 1, 5);
+	schAddTask( red_on,   0, 225);
+	schAddTask( red_off, 50, 225);
 
     schStart();
 
